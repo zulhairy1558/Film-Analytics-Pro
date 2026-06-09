@@ -191,5 +191,42 @@
     <script src="js/table.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/app.js"></script>
+
+    <!-- PWA Service Worker Registration (inline for reliability) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(function(reg) {
+                        console.log('Service Worker registered with scope:', reg.scope);
+                    })
+                    .catch(function(err) {
+                        console.error('Service Worker registration failed:', err);
+                    });
+            });
+
+            // Show custom install button when browser offers installation
+            let deferredPrompt;
+            window.addEventListener('beforeinstallprompt', function(e) {
+                e.preventDefault();
+                deferredPrompt = e;
+                var installBtn = document.getElementById('pwa-install-btn');
+                if (installBtn) {
+                    installBtn.classList.remove('hidden');
+                    installBtn.addEventListener('click', function() {
+                        deferredPrompt.prompt();
+                        deferredPrompt.userChoice.then(function(choice) {
+                            if (choice.outcome === 'accepted') {
+                                console.log('App installed');
+                            }
+                            deferredPrompt = null;
+                        });
+                    });
+                }
+            });
+        }
+    </script>
+
+
 </body>
 </html>
