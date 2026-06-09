@@ -2,21 +2,14 @@
   "name": "Film Analytics Pro",
   "short_name": "Film Analytics",
   "description": "AI-Augmented Film Property Analytics Tool",
-  "start_url": "/index.html",
+  "start_url": "/Film-Analytics-Pro/index.html",
+  "scope": "/Film-Analytics-Pro/",
   "display": "standalone",
   "background_color": "#f8fafc",
   "theme_color": "#1e293b",
   "orientation": "landscape-primary",
   "icons": [
-    {
-      "src": "icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
+    { "src": "icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512x512.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
